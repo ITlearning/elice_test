@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct elise_testApp: App {
+    
+    var service = Service()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
