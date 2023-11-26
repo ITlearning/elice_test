@@ -10,11 +10,11 @@ import SwiftUI
 @main
 struct elise_testApp: App {
     
-    var service = Service()
+    var service = Service(webRepository: .init("https://api-rest.elice.io/org/academy/"))
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView(viewModel: .init(service: service))
         }
     }
 }

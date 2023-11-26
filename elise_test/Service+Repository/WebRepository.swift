@@ -10,6 +10,8 @@ import Combine
 import Foundation
 
 protocol WebRepositoryProtocol {
+    func getCourseList(offset: Int, count: Int, filterIsRecommend: Bool?, filterIsFree: Bool?, filterConditions: [String: Any]?) -> AnyPublisher<CourseListModel?, Error>
+    
 }
 
 struct WebRepository: WebRepositoryProtocol {
@@ -17,6 +19,34 @@ struct WebRepository: WebRepositoryProtocol {
     
     init(_ baseURL: String) {
         self.baseURL = baseURL
+    }
+    
+    func getCourseList(offset: Int, count: Int, filterIsRecommend: Bool?, filterIsFree: Bool?, filterConditions: [String : Any]?) -> AnyPublisher<CourseListModel?, Error> {
+        
+        var parameter: [String: Any] = ["offset": offset,
+                                        "count": count]
+        
+        if let filterIsRecommend = filterIsRecommend {
+            parameter["filter_is_recommended"] = filterIsRecommend ? "true" : "false"
+        }
+        
+        
+        if let filterIsFree = filterIsFree {
+            parameter["filter_is_free"] = filterIsFree ? "true" : "false"
+        }
+        
+        if let filterConditions = filterConditions {
+            parameter["filter_conditions"] = filterConditions
+        }
+        
+        print("[@] parameter", parameter)
+        
+        let request: AnyPublisher<CourseListModel?, Error> = request(endpoint: API.getCourseList, parameters: parameter)
+        
+        return request.tryMap { obj -> CourseListModel? in
+            return obj
+        }
+        .eraseToAnyPublisher()
     }
     
 }
@@ -27,6 +57,8 @@ extension WebRepository {
         let headers = HTTPHeaders(endpoint.header)
         
         let afRequest = AF.request(baseURL + endpoint.path, method: endpoint.method, parameters: parameters, encoding: URLEncoding.default, headers: headers)
+        
+        print("[@] URL:", afRequest.convertible.urlRequest?.url?.absoluteString ?? "")
         
         return afRequest.validate().publishData().tryMap { result -> T? in
             if let error = result.error {

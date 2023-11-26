@@ -7,8 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4496067D2B12725500D15B6B /* CourseListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496067C2B12725500D15B6B /* CourseListModel.swift */; };
+		449606832B12FB2F00D15B6B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449606822B12FB2F00D15B6B /* MainViewModel.swift */; };
+		449606852B1303F800D15B6B /* NotoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449606842B1303F800D15B6B /* NotoText.swift */; };
+		4496068B2B13048B00D15B6B /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 449606882B13048700D15B6B /* NotoSansKR-Bold.ttf */; };
+		4496068C2B13048E00D15B6B /* NotoSansKR-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4496068A2B13048700D15B6B /* NotoSansKR-Light.ttf */; };
+		4496068D2B13048F00D15B6B /* NotoSansKR-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 449606872B13048700D15B6B /* NotoSansKR-Medium.ttf */; };
+		4496068E2B13049200D15B6B /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 449606892B13048700D15B6B /* NotoSansKR-Regular.ttf */; };
+		449606912B13052C00D15B6B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449606902B13052C00D15B6B /* Colors.swift */; };
+		449606932B1308E600D15B6B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449606922B1308E600D15B6B /* String+Extension.swift */; };
+		449606982B131FF000D15B6B /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 449606972B131FF000D15B6B /* SDWebImageSwiftUI */; };
+		4496069D2B1328A400D15B6B /* CourseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496069C2B1328A400D15B6B /* CourseItemView.swift */; };
+		449606A12B132F3E00D15B6B /* FlexibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449606A02B132F3E00D15B6B /* FlexibleView.swift */; };
+		449606A32B132F8600D15B6B /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449606A22B132F8600D15B6B /* View+Extension.swift */; };
 		44BA0B882B12650B003687B7 /* elise_testApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA0B872B12650B003687B7 /* elise_testApp.swift */; };
-		44BA0B8A2B12650B003687B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA0B892B12650B003687B7 /* ContentView.swift */; };
+		44BA0B8A2B12650B003687B7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA0B892B12650B003687B7 /* MainView.swift */; };
 		44BA0B8C2B12650C003687B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44BA0B8B2B12650C003687B7 /* Assets.xcassets */; };
 		44BA0B8F2B12650C003687B7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44BA0B8E2B12650C003687B7 /* Preview Assets.xcassets */; };
 		44BA0B992B12650C003687B7 /* elise_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA0B982B12650C003687B7 /* elise_testTests.swift */; };
@@ -39,9 +52,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4496067C2B12725500D15B6B /* CourseListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListModel.swift; sourceTree = "<group>"; };
+		449606822B12FB2F00D15B6B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		449606842B1303F800D15B6B /* NotoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotoText.swift; sourceTree = "<group>"; };
+		449606872B13048700D15B6B /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
+		449606882B13048700D15B6B /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
+		449606892B13048700D15B6B /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
+		4496068A2B13048700D15B6B /* NotoSansKR-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.ttf"; sourceTree = "<group>"; };
+		4496068F2B1304B000D15B6B /* elise-test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "elise-test-Info.plist"; sourceTree = SOURCE_ROOT; };
+		449606902B13052C00D15B6B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		449606922B1308E600D15B6B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		4496069C2B1328A400D15B6B /* CourseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseItemView.swift; sourceTree = "<group>"; };
+		449606A02B132F3E00D15B6B /* FlexibleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleView.swift; sourceTree = "<group>"; };
+		449606A22B132F8600D15B6B /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		44BA0B842B12650B003687B7 /* elise_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = elise_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BA0B872B12650B003687B7 /* elise_testApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = elise_testApp.swift; sourceTree = "<group>"; };
-		44BA0B892B12650B003687B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		44BA0B892B12650B003687B7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		44BA0B8B2B12650C003687B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44BA0B8E2B12650C003687B7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		44BA0B942B12650C003687B7 /* elise_testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = elise_testTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				449606982B131FF000D15B6B /* SDWebImageSwiftUI in Frameworks */,
 				44BA0BB82B12664A003687B7 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +108,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		449606862B13047600D15B6B /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				449606882B13048700D15B6B /* NotoSansKR-Bold.ttf */,
+				4496068A2B13048700D15B6B /* NotoSansKR-Light.ttf */,
+				449606872B13048700D15B6B /* NotoSansKR-Medium.ttf */,
+				449606892B13048700D15B6B /* NotoSansKR-Regular.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		449606992B13287F00D15B6B /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				4496069C2B1328A400D15B6B /* CourseItemView.swift */,
+				449606A02B132F3E00D15B6B /* FlexibleView.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		44BA0B7B2B12650B003687B7 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +151,8 @@
 		44BA0B862B12650B003687B7 /* elise_test */ = {
 			isa = PBXGroup;
 			children = (
+				4496068F2B1304B000D15B6B /* elise-test-Info.plist */,
+				449606862B13047600D15B6B /* Font */,
 				44BA0BB12B12657C003687B7 /* Service+Repository */,
 				44BA0BBC2B1266FC003687B7 /* View */,
 				44BA0BBE2B12696A003687B7 /* Util */,
@@ -161,7 +210,9 @@
 		44BA0BBC2B1266FC003687B7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				44BA0B892B12650B003687B7 /* ContentView.swift */,
+				449606992B13287F00D15B6B /* CustomView */,
+				44BA0B892B12650B003687B7 /* MainView.swift */,
+				449606822B12FB2F00D15B6B /* MainViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,6 +220,7 @@
 		44BA0BBD2B126700003687B7 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				4496067C2B12725500D15B6B /* CourseListModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -177,6 +229,10 @@
 			isa = PBXGroup;
 			children = (
 				44BA0BBF2B126974003687B7 /* CancelBag.swift */,
+				449606842B1303F800D15B6B /* NotoText.swift */,
+				449606902B13052C00D15B6B /* Colors.swift */,
+				449606922B1308E600D15B6B /* String+Extension.swift */,
+				449606A22B132F8600D15B6B /* View+Extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -199,6 +255,7 @@
 			name = elise_test;
 			packageProductDependencies = (
 				44BA0BB72B12664A003687B7 /* Alamofire */,
+				449606972B131FF000D15B6B /* SDWebImageSwiftUI */,
 			);
 			productName = elise_test;
 			productReference = 44BA0B842B12650B003687B7 /* elise_test.app */;
@@ -274,6 +331,7 @@
 			mainGroup = 44BA0B7B2B12650B003687B7;
 			packageReferences = (
 				44BA0BB62B12664A003687B7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				449606962B131FF000D15B6B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 44BA0B852B12650B003687B7 /* Products */;
 			projectDirPath = "";
@@ -292,7 +350,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				44BA0B8F2B12650C003687B7 /* Preview Assets.xcassets in Resources */,
+				4496068B2B13048B00D15B6B /* NotoSansKR-Bold.ttf in Resources */,
+				4496068D2B13048F00D15B6B /* NotoSansKR-Medium.ttf in Resources */,
 				44BA0B8C2B12650C003687B7 /* Assets.xcassets in Resources */,
+				4496068C2B13048E00D15B6B /* NotoSansKR-Light.ttf in Resources */,
+				4496068E2B13049200D15B6B /* NotoSansKR-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,12 +379,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44BA0B8A2B12650B003687B7 /* ContentView.swift in Sources */,
+				4496069D2B1328A400D15B6B /* CourseItemView.swift in Sources */,
+				44BA0B8A2B12650B003687B7 /* MainView.swift in Sources */,
+				449606912B13052C00D15B6B /* Colors.swift in Sources */,
 				44BA0BBA2B126681003687B7 /* WebRepository.swift in Sources */,
 				44BA0BC02B126974003687B7 /* CancelBag.swift in Sources */,
+				449606A12B132F3E00D15B6B /* FlexibleView.swift in Sources */,
+				449606932B1308E600D15B6B /* String+Extension.swift in Sources */,
+				449606A32B132F8600D15B6B /* View+Extension.swift in Sources */,
 				44BA0B882B12650B003687B7 /* elise_testApp.swift in Sources */,
+				4496067D2B12725500D15B6B /* CourseListModel.swift in Sources */,
 				44BA0BB52B1265C5003687B7 /* APICall.swift in Sources */,
 				44BA0BB32B12659F003687B7 /* Service.swift in Sources */,
+				449606852B1303F800D15B6B /* NotoText.swift in Sources */,
+				449606832B12FB2F00D15B6B /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,7 +479,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -463,7 +533,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -484,11 +554,13 @@
 				DEVELOPMENT_TEAM = ZMXTCSPNUZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "elise-test-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -513,11 +585,13 @@
 				DEVELOPMENT_TEAM = ZMXTCSPNUZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "elise-test-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -649,6 +723,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		449606962B131FF000D15B6B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		44BA0BB62B12664A003687B7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -660,6 +742,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		449606972B131FF000D15B6B /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 449606962B131FF000D15B6B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		44BA0BB72B12664A003687B7 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 44BA0BB62B12664A003687B7 /* XCRemoteSwiftPackageReference "Alamofire" */;

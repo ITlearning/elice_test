@@ -8,7 +8,6 @@
 import Combine
 import class Foundation.NSLock
 
-@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public final class CancelBag: Cancellable {
 
   private let lock: NSLock = NSLock()
@@ -39,7 +38,6 @@ public final class CancelBag: Cancellable {
   }
 }
 
-@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public extension Cancellable {
   func cancel(with cancellable: CancelBag) {
     cancellable.add(self)
