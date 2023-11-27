@@ -44,6 +44,7 @@
 		44BA0BC02B126974003687B7 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA0BBF2B126974003687B7 /* CancelBag.swift */; };
 		44FDC0412B14FA2A00CECAD7 /* LoadMoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FDC0402B14FA2A00CECAD7 /* LoadMoreModel.swift */; };
 		44FDC0432B14FA3900CECAD7 /* ConditionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FDC0422B14FA3900CECAD7 /* ConditionsModel.swift */; };
+		44FDC0452B15157400CECAD7 /* elise-test-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44FDC0442B15157400CECAD7 /* elise-test-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +75,6 @@
 		449606882B13048700D15B6B /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
 		449606892B13048700D15B6B /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
 		4496068A2B13048700D15B6B /* NotoSansKR-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.ttf"; sourceTree = "<group>"; };
-		4496068F2B1304B000D15B6B /* elise-test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "elise-test-Info.plist"; sourceTree = SOURCE_ROOT; };
 		449606902B13052C00D15B6B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		449606922B1308E600D15B6B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		4496069C2B1328A400D15B6B /* CourseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseItemView.swift; sourceTree = "<group>"; };
@@ -101,6 +101,7 @@
 		44BA0BBF2B126974003687B7 /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
 		44FDC0402B14FA2A00CECAD7 /* LoadMoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreModel.swift; sourceTree = "<group>"; };
 		44FDC0422B14FA3900CECAD7 /* ConditionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsModel.swift; sourceTree = "<group>"; };
+		44FDC0442B15157400CECAD7 /* elise-test-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "elise-test-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				449606BF2B14B72500D15B6B /* Modifier */,
-				4496068F2B1304B000D15B6B /* elise-test-Info.plist */,
 				449606862B13047600D15B6B /* Font */,
 				44BA0BB12B12657C003687B7 /* Service+Repository */,
 				44BA0BBC2B1266FC003687B7 /* View */,
@@ -254,6 +254,7 @@
 		44BA0BBB2B1266E7003687B7 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				44FDC0442B15157400CECAD7 /* elise-test-Info.plist */,
 				44BA0B872B12650B003687B7 /* elise_testApp.swift */,
 				44BA0B8B2B12650C003687B7 /* Assets.xcassets */,
 			);
@@ -412,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44BA0B8F2B12650C003687B7 /* Preview Assets.xcassets in Resources */,
+				44FDC0452B15157400CECAD7 /* elise-test-Info.plist in Resources */,
 				4496068B2B13048B00D15B6B /* NotoSansKR-Bold.ttf in Resources */,
 				4496068D2B13048F00D15B6B /* NotoSansKR-Medium.ttf in Resources */,
 				44BA0B8C2B12650C003687B7 /* Assets.xcassets in Resources */,
@@ -626,7 +628,7 @@
 				DEVELOPMENT_TEAM = ZMXTCSPNUZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "elise-test-Info.plist";
+				INFOPLIST_FILE = "elise_test/System/elise-test-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -657,7 +659,7 @@
 				DEVELOPMENT_TEAM = ZMXTCSPNUZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "elise-test-Info.plist";
+				INFOPLIST_FILE = "elise_test/System/elise-test-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
