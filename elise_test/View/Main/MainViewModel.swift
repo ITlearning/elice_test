@@ -22,7 +22,7 @@ struct LoadMoreModel {
 
 extension MainView {
     class ViewModel: ObservableObject {
-        private var service: Service
+        var service: Service
         private var cancelBag = CancelBag()
         
         @Published var courseList: [Course] = []

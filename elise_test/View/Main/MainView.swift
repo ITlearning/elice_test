@@ -14,32 +14,34 @@ struct MainView: View {
     
     var body: some View {
         
-        
-        VStack(alignment:.leading, spacing: 0) {
-            HStack(spacing: 0) {
-                
-                Image("Left")
-                Spacer()
-                
-                Button(action: {
+        NavigationView {
+            VStack(alignment:.leading, spacing: 0) {
+                HStack(spacing: 0) {
                     
-                }, label: {
-                    Image("Right")
-                })
+                    Image("Left")
+                    Spacer()
+                    
+                    Button(action: {
+                        
+                    }, label: {
+                        Image("Right")
+                    })
+                    
+                }
+                .padding(.horizontal, 16)
                 
-            }
-            .padding(.horizontal, 16)
-            
-            ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
-                    freeCourseView
-                    recommendCourseView
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 0) {
+                        freeCourseView
+                        recommendCourseView
+                    }
                 }
             }
+            .onAppear {
+                viewModel.setDatas()
+            }
         }
-        .onAppear {
-            viewModel.setDatas()
-        }
+        
     }
     
     var freeCourseView: some View {
@@ -57,9 +59,9 @@ struct MainView: View {
                     LazyHGrid(rows: [.init()], spacing: 16, content: {
                         ForEach((viewModel.courseList).indices, id: \.self) { idx in
                             let item = viewModel.courseList[idx]
-                            Button(action: {
-                                
-                                
+                            
+                            NavigationLink(destination: {
+                                DetailView(viewModel: .init(service: viewModel.service))
                             }, label: {
                                 CourseItemView(item: item)
                             })
@@ -98,14 +100,15 @@ struct MainView: View {
                         ForEach(viewModel.recommendCourseList.indices, id: \.self) { idx in
                             let item = viewModel.recommendCourseList[idx]
                             
-                            Button(action: {
-                                
+                            NavigationLink(destination: {
+                                DetailView(viewModel: .init(service: viewModel.service))
                             }, label: {
                                 CourseItemView(item: item)
                             })
                             .onAppear {
                                 viewModel.recommendLoadMore(idx: idx)
                             }
+                         
                                 
                         }
                     })
