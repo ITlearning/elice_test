@@ -12,6 +12,7 @@ struct MainView: View {
     
     @StateObject var viewModel: ViewModel
     
+    
     var body: some View {
         
         NavigationView {
@@ -34,6 +35,7 @@ struct MainView: View {
                     VStack(alignment: .leading, spacing: 0) {
                         freeCourseView
                         recommendCourseView
+                        conditionCourseView
                     }
                 }
             }
@@ -41,6 +43,8 @@ struct MainView: View {
                 if !viewModel.isInit {
                     viewModel.setDatas()
                     viewModel.isInit = true
+                } else {
+                    viewModel.updateCheckMyLectures()
                 }
                 
             }
@@ -112,6 +116,46 @@ struct MainView: View {
                             })
                             .onAppear {
                                 viewModel.recommendLoadMore(idx: idx)
+                            }
+                         
+                                
+                        }
+                    })
+                    
+                    Spacer()
+                        .frame(width: 16)
+                }
+                
+            })
+            .padding(.top, 16)
+        })
+    }
+    
+    var conditionCourseView: some View {
+        VStack(alignment: .leading, spacing: 0, content: {
+            NotoText(text: "내 학습", size: 16, font: .notoSansBold)
+                .padding(.top, 8)
+                .padding(.leading, 16)
+            
+            ScrollView(.horizontal, showsIndicators: false , content: {
+                
+                HStack(alignment: .top, spacing: 0) {
+                    
+                    
+                    Spacer()
+                        .frame(width: 16)
+                    
+                    LazyHGrid(rows: [.init()], spacing: 16, content: {
+                        ForEach(viewModel.conditionsCourseList.indices, id: \.self) { idx in
+                            let item = viewModel.conditionsCourseList[idx]
+                            
+                            NavigationLink(destination: {
+                                DetailView(viewModel: .init(service: viewModel.service, courseId: item.id))
+                            }, label: {
+                                CourseItemView(item: item)
+                            })
+                            .onAppear {
+                                viewModel.conditionLoadMore(idx: idx)
                             }
                          
                                 

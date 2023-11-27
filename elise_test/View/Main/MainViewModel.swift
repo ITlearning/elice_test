@@ -14,12 +14,6 @@ enum CourseType {
     case contition(value: [String: Any])
 }
 
-struct LoadMoreModel {
-    var isLoad: Bool
-    var offset: Int
-    var last: Bool
-}
-
 extension MainView {
     class ViewModel: ObservableObject {
         var service: Service
@@ -27,6 +21,8 @@ extension MainView {
         
         var isInit: Bool = false
         
+        @Published var myLectureIDs: [LectureCDModel] = []
+        var allMyLectures: [LectureCDModel] = []
         @Published var courseList: [Course] = []
         @Published var recommendCourseList: [Course] = []
         @Published var conditionsCourseList: [Course] = []
@@ -43,8 +39,45 @@ extension MainView {
         
         func setDatas() {
             Task {
+                let _ = await getMyLectures()
                 let _ = await getCourseList(.free)
                 let _ = await getCourseList(.recommend)
+                
+                let value = await makeConditionModel()
+                
+                switch value {
+                case .success(let success):
+                    let _ = await getCourseList(.contition(value: success), count: success["course_ids"]?.count ?? 10)
+                case .failure(let failure):
+                     print(failure.localizedDescription)
+                }
+                
+                
+            }
+        }
+        
+        func updateCheckMyLectures() {
+            Task {
+                let result = await getMyLectures()
+                
+                switch result {
+                case .success(let success):
+                    if success {
+                        
+                        let value = await makeConditionModel()
+                        
+                        switch value {
+                        case .success(let success):
+                            let _ = await getCourseList(.contition(value: success), count: success["course_ids"]?.count ?? 10)
+                        case .failure(let failure):
+                            print(failure.localizedDescription)
+                        }
+                        
+                    }
+                case .failure(let failure):
+                    print(failure.localizedDescription)
+                }
+                
             }
         }
         
@@ -66,9 +99,104 @@ extension MainView {
             }
         }
         
+        func conditionLoadMore(idx: Int) {
+            guard idx >= conditionsCourseList.count - 1 else { return }
+            
+            Task {
+                let value = await makeConditionModel()
+                
+                switch value {
+                case .success(let success):
+                    let _ = await getCourseList(.contition(value: success), count: success["course_ids"]?.count ?? 10, loadMore: true)
+                case .failure(let failure):
+                    print(failure.localizedDescription)
+                }
+            }
+        }
+        
+        func makeConditionModel(loadMore: Bool = false) async -> Result<[String: [Int]], Error> {
+            return await withCheckedContinuation { continuation in
+                var isLoad: Bool = true
+                var count: Int = 10
+                
+                var temp: [String: [Int]] = [:]
+                
+                var intTemp: [Int] = []
+                
+                while(isLoad) {
+                    
+                    guard count > 0 else {
+                        isLoad = false
+                        break
+                        
+                    }
+                    
+                    guard !myLectureIDs.isEmpty else {
+                        isLoad = false
+                        break
+                    }
+                    
+                    let item = myLectureIDs.removeFirst()
+                    
+                    intTemp.append(item.id)
+                    
+                    count -= 1
+                    
+                }
+                
+                temp["course_ids"] = intTemp
+                
+                continuation.resume(returning: .success(temp))
+            }
+        }
+        
+        func getMyLectures() async -> Result<Bool, Error> {
+            return await withCheckedContinuation({ continuation in
+                self.service.loadLectureIDs()
+                    .receive(on: DispatchQueue.main)
+                    .sink(receiveCompletion: { result in
+                        switch result {
+                        case .failure(let error):
+                            print("error", error.localizedDescription)
+                            continuation.resume(returning: .failure(error))
+                        case .finished:
+                            print("finished")
+                        }
+                    
+                    }, receiveValue: { [weak self] value in
+                        guard let self = self else { return }
+                        
+                        var isUpdate: Bool = false
+                        
+                        value.forEach { model in
+                            if !self.myLectureIDs.contains(where: { $0.id == model.id }) {
+                                isUpdate = true
+                            }
+                        }
+                        
+                        if !isUpdate {
+                            isUpdate = value.count != self.myLectureIDs.count
+                        }
+                        
+                        print("[@] isUpdate", isUpdate)
+                        
+                        if isUpdate {
+                            self.myLectureIDs = value
+                            self.allMyLectures = value
+                            continuation.resume(returning: .success(true))
+                        } else {
+                            continuation.resume(returning: .success(false))
+                        }
+                        
+                    })
+                    .cancel(with: cancelBag)
+            })
+        }
+        
         func getCourseList(_ type: CourseType, count: Int = 10, loadMore: Bool = false) async -> Result<Bool, Error> {
             
             print("[@] type", type)
+            print("[@] loadMore", loadMore)
             
             return await withCheckedContinuation({ continuation in
                 
@@ -85,22 +213,23 @@ extension MainView {
                     conditions = value
                 }
                 
-                switch type {
-                case .free:
-                    guard !freeFreeLoad.isLoad || !freeFreeLoad.last else {
-                        return continuation.resume(returning: .success(false))
-                    }
-                case .recommend:
-                    guard !recommendCourseFreeLoad.isLoad || !recommendCourseFreeLoad.last else {
-                        return continuation.resume(returning: .success(false))
-                    }
-                case .contition:
-                    guard !conditionCourseFreeLoad.isLoad || !conditionCourseFreeLoad.last else {
-                        return continuation.resume(returning: .success(false))
-                    }
-                }
-                
                 if loadMore {
+                    
+                    switch type {
+                    case .free:
+                        guard !freeFreeLoad.isLoad || !freeFreeLoad.last else {
+                            return continuation.resume(returning: .success(false))
+                        }
+                    case .recommend:
+                        guard !recommendCourseFreeLoad.isLoad || !recommendCourseFreeLoad.last else {
+                            return continuation.resume(returning: .success(false))
+                        }
+                    case .contition:
+                        guard !conditionCourseFreeLoad.isLoad || !conditionCourseFreeLoad.last else {
+                            return continuation.resume(returning: .success(false))
+                        }
+                    }
+                    
                     switch type {
                     case .contition:
                         conditionCourseFreeLoad.isLoad = true
@@ -116,17 +245,17 @@ extension MainView {
                     switch type {
                     case .contition:
                         conditionCourseFreeLoad.isLoad = true
-                        conditionCourseFreeLoad.offset = 1
+                        conditionCourseFreeLoad.offset = 0
                     case .free:
                         freeFreeLoad.isLoad = true
-                        freeFreeLoad.offset = 1
+                        freeFreeLoad.offset = 0
                     case .recommend:
                         recommendCourseFreeLoad.isLoad = true
-                        recommendCourseFreeLoad.offset = 1
+                        recommendCourseFreeLoad.offset = 0
                     }
                 }
                 
-                var offset: Int = 1
+                var offset: Int = 0
                 
                 switch type {
                 case .contition:
@@ -177,6 +306,11 @@ extension MainView {
                             if loadMore {
                                 self.conditionsCourseList += value?.courses ?? []
                             } else {
+                                
+                                if !self.conditionsCourseList.isEmpty {
+                                    self.conditionsCourseList.removeAll()
+                                }
+                                
                                 self.conditionsCourseList = value?.courses ?? []
                             }
                             

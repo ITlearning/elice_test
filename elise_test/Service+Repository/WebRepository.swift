@@ -62,7 +62,18 @@ struct WebRepository: WebRepositoryProtocol {
         }
         
         if let filterConditions = filterConditions {
-            parameter["filter_conditions"] = filterConditions
+            
+            var filterConditionString = ""
+            
+            do {
+                let data = try JSONSerialization.data(withJSONObject: filterConditions, options: .prettyPrinted)
+                
+                filterConditionString = String(data: data, encoding: .utf8) ?? ""
+            } catch {
+                print("JSON Error",error.localizedDescription)
+            }
+            
+            parameter["filter_conditions"] = filterConditionString
         }
         
         print("[@] parameter", parameter)
