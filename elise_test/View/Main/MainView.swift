@@ -56,9 +56,6 @@ struct MainView: View {
             }
             
         }
-        .refreshable {
-            viewModel.setDatas()
-        }
     }
     
     var freeCourseView: some View {

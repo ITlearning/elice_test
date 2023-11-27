@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Parma
+import SDWebImageSwiftUI
 import Kingfisher
 
 struct DetailView: View {
@@ -139,8 +140,9 @@ extension DetailView {
                         .foregroundColor(Colors.logoBackgroundGray)
                         .frame(width: 36, height: 36)
                     
-                    KFImage(URL(string: logoUrl))
+                    WebImage(url: URL(string: logoUrl))
                         .resizable()
+                        .indicator(.activity(style: .medium))
                         .scaledToFit()
                         .frame(width: 34, height: 34)
                 }
@@ -154,8 +156,9 @@ extension DetailView {
             .padding(.vertical, 14)
             
             
-            KFImage(URL(string: imageUrl))
+            WebImage(url: URL(string: imageUrl))
                 .resizable()
+                .indicator(.activity(style: .medium))
                 .aspectRatio(2/1, contentMode: .fit)
         }
         
@@ -172,8 +175,9 @@ extension DetailView {
                         .foregroundColor(Colors.logoBackgroundGray)
                         .frame(width: 56, height: 56)
                     
-                    KFImage(URL(string: logoUrl))
+                    WebImage(url: URL(string: logoUrl))
                         .resizable()
+                        .indicator(.activity(style: .medium))
                         .scaledToFit()
                         .frame(width: 50, height: 50)
                 }

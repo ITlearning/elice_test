@@ -19,6 +19,7 @@ struct CourseItemView: View {
                 if let imageUrl = item.imageFileURL {
                     WebImage(url: URL(string: imageUrl))
                         .resizable()
+                        .indicator(.activity(style: .medium))
                         .scaledToFit()
                         .cornerRadius(10)
                         .clipped()
@@ -29,6 +30,7 @@ struct CourseItemView: View {
                         .overlay(
                             WebImage(url: URL(string: logoUrl))
                                 .resizable()
+                                .indicator(.activity(style: .medium))
                                 .scaledToFit()
                                 .frame(width: 56, height: 56)
                         )
