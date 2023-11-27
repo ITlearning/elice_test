@@ -63,7 +63,7 @@ struct DBRepository: DBRepositoryProtocol {
             
             do {
                 let data = try container.viewContext.fetch(request).map({ entity in
-                    LectureCDModel(id: Int(entity.id))
+                    LectureCDModel(id: Int(entity.id), createdAt: entity.created_at ?? Date())
                 })
                 
                 promise(.success(data))
@@ -84,6 +84,7 @@ struct DBRepository: DBRepositoryProtocol {
         let future = Future<Void, Error> { promise in
             let lectureIDEntity = LectureCDModelEntity(context: container.viewContext)
             lectureIDEntity.id = Int64(lectureID)
+            lectureIDEntity.created_at = Date()
             let result = saveContext()
             
             if result.0 {
@@ -106,6 +107,7 @@ struct DBRepository: DBRepositoryProtocol {
         request.fetchLimit = 1
         request.predicate = NSPredicate(
             format: "id == %lld", Int64(id))
+        request.sortDescriptors = [NSSortDescriptor(key: "created_at", ascending: true)]
         let context =  container.viewContext
         let todoCoreDataEntity = try context.fetch(request)[0]
         return todoCoreDataEntity

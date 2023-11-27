@@ -68,11 +68,21 @@ extension MainView {
                         
                         switch value {
                         case .success(let success):
+                            
+                            if success["course_ids"]?.isEmpty ?? false {
+                                self.deleteAllAction()
+                            } else {
+                                let _ = await getCourseList(.contition(value: success), count: success["course_ids"]?.count ?? 10)
+                            }
                             let _ = await getCourseList(.contition(value: success), count: success["course_ids"]?.count ?? 10)
                         case .failure(let failure):
                             print(failure.localizedDescription)
                         }
                         
+                    } else {
+                        if myLectureIDs.isEmpty {
+                            self.deleteAllAction()
+                        }
                     }
                 case .failure(let failure):
                     print(failure.localizedDescription)
@@ -100,7 +110,9 @@ extension MainView {
         }
         
         func conditionLoadMore(idx: Int) {
-            guard idx >= conditionsCourseList.count - 1 else { return }
+            guard idx >= conditionsCourseList.count - 1 else {
+                return
+            }
             
             Task {
                 let value = await makeConditionModel()
@@ -111,6 +123,14 @@ extension MainView {
                 case .failure(let failure):
                     print(failure.localizedDescription)
                 }
+            }
+        }
+        
+        func deleteAllAction() {
+            DispatchQueue.main.async {
+                self.myLectureIDs.removeAll()
+                self.allMyLectures.removeAll()
+                self.conditionsCourseList.removeAll()
             }
         }
         
@@ -131,12 +151,12 @@ extension MainView {
                         
                     }
                     
-                    guard !myLectureIDs.isEmpty else {
+                    guard !allMyLectures.isEmpty else {
                         isLoad = false
                         break
                     }
                     
-                    let item = myLectureIDs.removeFirst()
+                    let item = allMyLectures.removeFirst()
                     
                     intTemp.append(item.id)
                     
@@ -178,8 +198,6 @@ extension MainView {
                             isUpdate = value.count != self.myLectureIDs.count
                         }
                         
-                        print("[@] isUpdate", isUpdate)
-                        
                         if isUpdate {
                             self.myLectureIDs = value
                             self.allMyLectures = value
@@ -194,9 +212,6 @@ extension MainView {
         }
         
         func getCourseList(_ type: CourseType, count: Int = 10, loadMore: Bool = false) async -> Result<Bool, Error> {
-            
-            print("[@] type", type)
-            print("[@] loadMore", loadMore)
             
             return await withCheckedContinuation({ continuation in
                 
@@ -281,10 +296,15 @@ extension MainView {
                     }, receiveValue: { value in
                         switch type {
                         case .free:
+                            
                             if loadMore {
-                                self.courseList += value?.courses ?? []
+                                withAnimation {
+                                    self.courseList += value?.courses ?? []
+                                }
                             } else {
-                                self.courseList = value?.courses ?? []
+                                withAnimation {
+                                    self.courseList = value?.courses ?? []
+                                }
                             }
                            
                             if (value?.courses ?? []).isEmpty {
@@ -293,9 +313,13 @@ extension MainView {
                             
                         case .recommend:
                             if loadMore {
-                                self.recommendCourseList += value?.courses ?? []
+                                withAnimation {
+                                    self.recommendCourseList += value?.courses ?? []
+                                }
                             } else {
-                                self.recommendCourseList = value?.courses ?? []
+                                withAnimation {
+                                    self.recommendCourseList = value?.courses ?? []
+                                }
                             }
                             
                             if (value?.courses ?? []).isEmpty {
@@ -304,14 +328,15 @@ extension MainView {
                             
                         case .contition:
                             if loadMore {
-                                self.conditionsCourseList += value?.courses ?? []
+                                withAnimation {
+                                    self.conditionsCourseList += value?.courses ?? []
+                                }
                             } else {
                                 
-                                if !self.conditionsCourseList.isEmpty {
-                                    self.conditionsCourseList.removeAll()
+                                withAnimation {
+                                    self.conditionsCourseList = value?.courses ?? []
                                 }
                                 
-                                self.conditionsCourseList = value?.courses ?? []
                             }
                             
                             if (value?.courses ?? []).isEmpty {

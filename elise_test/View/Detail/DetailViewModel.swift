@@ -74,8 +74,6 @@ extension DetailView {
                     }, receiveValue: { [weak self] value in
                         guard let self = self else { return }
                         self.lectureList = value?.lectures ?? []
-                        
-                        print("[@] Success", self.lectureList)
                     })
                     .cancel(with: self.cancelBag)
             })
@@ -132,7 +130,6 @@ extension DetailView {
                     }
                 }, receiveValue: { [weak self] value in
                     guard let self = self else { return }
-                    print("[@] value", value)
                     self.myLectureIDs = value
                 })
                 .cancel(with: cancelBag)

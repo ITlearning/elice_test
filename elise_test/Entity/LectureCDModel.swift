@@ -9,4 +9,5 @@ import Foundation
 
 struct LectureCDModel {
     var id: Int
+    var createdAt: Date
 }

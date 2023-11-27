@@ -70,13 +70,11 @@ struct WebRepository: WebRepositoryProtocol {
                 
                 filterConditionString = String(data: data, encoding: .utf8) ?? ""
             } catch {
-                print("JSON Error",error.localizedDescription)
+                print("error",error.localizedDescription)
             }
             
             parameter["filter_conditions"] = filterConditionString
         }
-        
-        print("[@] parameter", parameter)
         
         let request: AnyPublisher<CourseListModel?, Error> = request(endpoint: API.getCourseList, parameters: parameter)
         
@@ -94,8 +92,6 @@ extension WebRepository {
         let headers = HTTPHeaders(endpoint.header)
         
         let afRequest = AF.request(baseURL + endpoint.path, method: endpoint.method, parameters: parameters, encoding: URLEncoding.default, headers: headers)
-        
-        print("[@] URL:", afRequest.convertible.urlRequest?.url?.absoluteString ?? "")
         
         return afRequest.validate().publishData().tryMap { result -> T? in
             if let error = result.error {

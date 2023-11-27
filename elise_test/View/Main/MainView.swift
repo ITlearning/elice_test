@@ -16,40 +16,49 @@ struct MainView: View {
     var body: some View {
         
         NavigationView {
-            VStack(alignment:.leading, spacing: 0) {
-                HStack(spacing: 0) {
-                    
-                    Image("Left")
-                    Spacer()
-                    
-                    Button(action: {
+            
+            ScrollViewReader { reader in
+                VStack(alignment:.leading, spacing: 0) {
+                    HStack(spacing: 0) {
                         
-                    }, label: {
-                        Image("Right")
-                    })
+                        Image("Left")
+                            .frame(height: 32)
+                        Spacer()
+                        
+                        Button(action: {
+                            
+                        }, label: {
+                            Image("Right")
+                        })
+                        
+                    }
+                    .padding(.horizontal, 16)
                     
-                }
-                .padding(.horizontal, 16)
-                
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 0) {
-                        freeCourseView
-                        recommendCourseView
-                        conditionCourseView
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 0) {
+                            freeCourseView
+                            recommendCourseView
+                            if !viewModel.conditionsCourseList.isEmpty {
+                                conditionCourseView
+                            }
+                        }
                     }
                 }
-            }
-            .task {
-                if !viewModel.isInit {
-                    viewModel.setDatas()
-                    viewModel.isInit = true
-                } else {
-                    viewModel.updateCheckMyLectures()
+                .task {
+                    if !viewModel.isInit {
+                        viewModel.setDatas()
+                        viewModel.isInit = true
+                    } else {
+                        viewModel.updateCheckMyLectures()
+                    }
+                    
                 }
-                
             }
+            
         }
-        
+        .refreshable {
+            viewModel.setDatas()
+        }
     }
     
     var freeCourseView: some View {
@@ -58,34 +67,39 @@ struct MainView: View {
                 .padding(.top, 8)
                 .padding(.leading, 16)
             
-            ScrollView(.horizontal, showsIndicators: false , content: {
-                
-                HStack(alignment: .top, spacing: 0) {
-                    Spacer()
-                        .frame(width: 16)
+            if viewModel.courseList.isEmpty {
+                lodingView
+            } else {
+                ScrollView(.horizontal, showsIndicators: false , content: {
                     
-                    LazyHGrid(rows: [.init()], spacing: 16, content: {
-                        ForEach((viewModel.courseList).indices, id: \.self) { idx in
-                            let item = viewModel.courseList[idx]
-                            
-                            NavigationLink(destination: {
-                                DetailView(viewModel: .init(service: viewModel.service, courseId: item.id))
-                            }, label: {
-                                CourseItemView(item: item)
-                            })
-                            .onAppear {
+                    HStack(alignment: .top, spacing: 0) {
+                        Spacer()
+                            .frame(width: 16)
+                        
+                        LazyHGrid(rows: [.init()], spacing: 16, content: {
+                            ForEach((viewModel.courseList).indices, id: \.self) { idx in
+                                let item = viewModel.courseList[idx]
                                 
-                                viewModel.freeLoadMore(idx: idx)
+                                NavigationLink(destination: {
+                                    DetailView(viewModel: .init(service: viewModel.service, courseId: item.id))
+                                }, label: {
+                                    CourseItemView(item: item)
+                                        .frame(width: 200, height: 220)
+                                })
+                                .onAppear {
+                                    viewModel.freeLoadMore(idx: idx)
+                                }
                             }
-                        }
-                    })
+                        })
+                        
+                        Spacer()
+                            .frame(width: 16)
+                    }
                     
-                    Spacer()
-                        .frame(width: 16)
-                }
-                
-            })
-            .padding(.top, 16)
+                })
+                .padding(.top, 16)
+                .padding(.bottom, 24)
+            }
         }
         
     }
@@ -97,37 +111,44 @@ struct MainView: View {
                 .padding(.top, 8)
                 .padding(.leading, 16)
             
-            ScrollView(.horizontal, showsIndicators: false , content: {
-                
-                HStack(alignment: .top, spacing: 0) {
+            if viewModel.recommendCourseList.isEmpty {
+                lodingView
+            } else {
+                ScrollView(.horizontal, showsIndicators: false , content: {
                     
-                    
-                    Spacer()
-                        .frame(width: 16)
-                    
-                    LazyHGrid(rows: [.init()], spacing: 16, content: {
-                        ForEach(viewModel.recommendCourseList.indices, id: \.self) { idx in
-                            let item = viewModel.recommendCourseList[idx]
-                            
-                            NavigationLink(destination: {
-                                DetailView(viewModel: .init(service: viewModel.service, courseId: item.id))
-                            }, label: {
-                                CourseItemView(item: item)
-                            })
-                            .onAppear {
-                                viewModel.recommendLoadMore(idx: idx)
-                            }
-                         
+                    HStack(alignment: .top, spacing: 0) {
+                        
+                        
+                        Spacer()
+                            .frame(width: 16)
+                        
+                        LazyHGrid(rows: [.init()], spacing: 16, content: {
+                            ForEach(viewModel.recommendCourseList.indices, id: \.self) { idx in
+                                let item = viewModel.recommendCourseList[idx]
                                 
-                        }
-                    })
+                                NavigationLink(destination: {
+                                    DetailView(viewModel: .init(service: viewModel.service, courseId: item.id))
+                                }, label: {
+                                    CourseItemView(item: item)
+                                        .frame(width: 200, height: 220)
+                                })
+                                .onAppear {
+                                    viewModel.recommendLoadMore(idx: idx)
+                                }
+                             
+                                    
+                            }
+                        })
+                        
+                        Spacer()
+                            .frame(width: 16)
+                    }
                     
-                    Spacer()
-                        .frame(width: 16)
-                }
-                
-            })
-            .padding(.top, 16)
+                })
+                .padding(.top, 16)
+                .padding(.bottom, 24)
+            }
+            
         })
     }
     
@@ -153,10 +174,12 @@ struct MainView: View {
                                 DetailView(viewModel: .init(service: viewModel.service, courseId: item.id))
                             }, label: {
                                 CourseItemView(item: item)
+                                    .frame(width: 200, height: 220)
                             })
                             .onAppear {
                                 viewModel.conditionLoadMore(idx: idx)
                             }
+                            .id(item.id)
                          
                                 
                         }
@@ -169,6 +192,15 @@ struct MainView: View {
             })
             .padding(.top, 16)
         })
+    }
+    
+    var lodingView: some View {
+        HStack {
+            Spacer()
+            NotoText(text: "로딩중..!")
+                .frame(height: 230)
+            Spacer()
+        }
     }
 }
 
