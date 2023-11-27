@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44491A6A2B14EEFB0049102A /* DBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44491A692B14EEFB0049102A /* DBRepository.swift */; };
+		44491A6D2B14F00E0049102A /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44491A6B2B14F00E0049102A /* Models.xcdatamodeld */; };
+		44491A6F2B14F05C0049102A /* LectureCDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44491A6E2B14F05C0049102A /* LectureCDModel.swift */; };
 		4496067D2B12725500D15B6B /* CourseListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496067C2B12725500D15B6B /* CourseListModel.swift */; };
 		449606832B12FB2F00D15B6B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449606822B12FB2F00D15B6B /* MainViewModel.swift */; };
 		449606852B1303F800D15B6B /* NotoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449606842B1303F800D15B6B /* NotoText.swift */; };
@@ -59,6 +62,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		44491A692B14EEFB0049102A /* DBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBRepository.swift; sourceTree = "<group>"; };
+		44491A6C2B14F00E0049102A /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
+		44491A6E2B14F05C0049102A /* LectureCDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCDModel.swift; sourceTree = "<group>"; };
 		4496067C2B12725500D15B6B /* CourseListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListModel.swift; sourceTree = "<group>"; };
 		449606822B12FB2F00D15B6B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		449606842B1303F800D15B6B /* NotoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotoText.swift; sourceTree = "<group>"; };
@@ -235,6 +241,8 @@
 				44BA0BB22B12659F003687B7 /* Service.swift */,
 				44BA0BB42B1265C5003687B7 /* APICall.swift */,
 				44BA0BB92B126681003687B7 /* WebRepository.swift */,
+				44491A692B14EEFB0049102A /* DBRepository.swift */,
+				44491A6B2B14F00E0049102A /* Models.xcdatamodeld */,
 			);
 			path = "Service+Repository";
 			sourceTree = "<group>";
@@ -264,6 +272,7 @@
 				4496067C2B12725500D15B6B /* CourseListModel.swift */,
 				449606BD2B14B2AE00D15B6B /* LectureListModel.swift */,
 				449606C42B14D84E00D15B6B /* CouseItemModel.swift */,
+				44491A6E2B14F05C0049102A /* LectureCDModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -429,6 +438,7 @@
 				449606C52B14D84E00D15B6B /* CouseItemModel.swift in Sources */,
 				4496069D2B1328A400D15B6B /* CourseItemView.swift in Sources */,
 				44BA0B8A2B12650B003687B7 /* MainView.swift in Sources */,
+				44491A6F2B14F05C0049102A /* LectureCDModel.swift in Sources */,
 				449606912B13052C00D15B6B /* Colors.swift in Sources */,
 				44BA0BBA2B126681003687B7 /* WebRepository.swift in Sources */,
 				44BA0BC02B126974003687B7 /* CancelBag.swift in Sources */,
@@ -437,12 +447,14 @@
 				449606A32B132F8600D15B6B /* View+Extension.swift in Sources */,
 				449606BE2B14B2AE00D15B6B /* LectureListModel.swift in Sources */,
 				449606C12B14B73500D15B6B /* PressButtonStyle.swift in Sources */,
+				44491A6A2B14EEFB0049102A /* DBRepository.swift in Sources */,
 				44BA0B882B12650B003687B7 /* elise_testApp.swift in Sources */,
 				4496067D2B12725500D15B6B /* CourseListModel.swift in Sources */,
 				44BA0BB52B1265C5003687B7 /* APICall.swift in Sources */,
 				44BA0BB32B12659F003687B7 /* Service.swift in Sources */,
 				449606852B1303F800D15B6B /* NotoText.swift in Sources */,
 				449606A72B13477A00D15B6B /* DetailView.swift in Sources */,
+				44491A6D2B14F00E0049102A /* Models.xcdatamodeld in Sources */,
 				449606832B12FB2F00D15B6B /* MainViewModel.swift in Sources */,
 				449606A92B13478300D15B6B /* DetailViewModel.swift in Sources */,
 			);
@@ -831,6 +843,19 @@
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		44491A6B2B14F00E0049102A /* Models.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				44491A6C2B14F00E0049102A /* Models.xcdatamodel */,
+			);
+			currentVersion = 44491A6C2B14F00E0049102A /* Models.xcdatamodel */;
+			path = Models.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 44BA0B7C2B12650B003687B7 /* Project object */;
 }

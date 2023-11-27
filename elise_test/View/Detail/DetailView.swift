@@ -78,16 +78,15 @@ struct DetailView: View {
                     Spacer()
                     
                     Button(action: {
-                        
+                        viewModel.myLecturesAction()
                     }, label: {
                         
                         ZStack {
                             
                             RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(Colors.applyPurple)
+                                .foregroundColor(viewModel.getLectureStatus() ? Colors.lectureDisableRed : Colors.applyPurple)
                             
-                            
-                            NotoText(text: "수강 신청", color: .white, size: 16,font: .notoSansBold)
+                            NotoText(text: viewModel.getLectureStatus() ? "수강 취소" : "수강 신청", color: .white, size: 16,font: .notoSansBold)
                         }
                         
                     })
