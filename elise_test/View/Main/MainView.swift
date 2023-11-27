@@ -38,7 +38,11 @@ struct MainView: View {
                 }
             }
             .task {
-                viewModel.setDatas()
+                if !viewModel.isInit {
+                    viewModel.setDatas()
+                    viewModel.isInit = true
+                }
+                
             }
         }
         

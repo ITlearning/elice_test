@@ -25,19 +25,17 @@ extension MainView {
         var service: Service
         private var cancelBag = CancelBag()
         
+        var isInit: Bool = false
+        
         @Published var courseList: [Course] = []
         @Published var recommendCourseList: [Course] = []
         @Published var conditionsCourseList: [Course] = []
         
-        private var freeFreeLoad = LoadMoreModel(isLoad: false, offset: 1, last: false)
-        private var recommendCourseFreeLoad = LoadMoreModel(isLoad: false, offset: 1, last: false)
-        private var conditionCourseFreeLoad = LoadMoreModel(isLoad: false, offset: 1, last: false)
+        private var freeFreeLoad = LoadMoreModel(isLoad: false, offset: 0, last: false)
+        private var recommendCourseFreeLoad = LoadMoreModel(isLoad: false, offset: 0, last: false)
+        private var conditionCourseFreeLoad = LoadMoreModel(isLoad: false, offset: 0, last: false)
         
         var isLoad: Bool = false
-        
-        
-        var offset: Int = 1
-        var count: Int = 10
         
         init(service: Service) {
             self.service = service
@@ -164,8 +162,6 @@ extension MainView {
                                 self.freeFreeLoad.last = true
                             }
                             
-                            print("[@@]", self.courseList)
-                            
                         case .recommend:
                             if loadMore {
                                 self.recommendCourseList += value?.courses ?? []
@@ -176,8 +172,6 @@ extension MainView {
                             if (value?.courses ?? []).isEmpty {
                                 self.recommendCourseFreeLoad.last = true
                             }
-                            
-                            print("[@@]", self.recommendCourseList)
                             
                         case .contition:
                             if loadMore {
