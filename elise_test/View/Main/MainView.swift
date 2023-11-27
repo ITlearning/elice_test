@@ -37,7 +37,7 @@ struct MainView: View {
                     }
                 }
             }
-            .onAppear {
+            .task {
                 viewModel.setDatas()
             }
         }
@@ -61,11 +61,12 @@ struct MainView: View {
                             let item = viewModel.courseList[idx]
                             
                             NavigationLink(destination: {
-                                DetailView(viewModel: .init(service: viewModel.service))
+                                DetailView(viewModel: .init(service: viewModel.service, courseId: item.id))
                             }, label: {
                                 CourseItemView(item: item)
                             })
                             .onAppear {
+                                
                                 viewModel.freeLoadMore(idx: idx)
                             }
                         }
@@ -101,7 +102,7 @@ struct MainView: View {
                             let item = viewModel.recommendCourseList[idx]
                             
                             NavigationLink(destination: {
-                                DetailView(viewModel: .init(service: viewModel.service))
+                                DetailView(viewModel: .init(service: viewModel.service, courseId: item.id))
                             }, label: {
                                 CourseItemView(item: item)
                             })

@@ -41,7 +41,8 @@ struct Course: Codable {
     let courseType: Int
     let infoSummaryVisibilityDict: InfoSummaryVisibilityDict
     let isExerciseDeprecated: Bool
-    let lastCourseInfoID: Int
+    let lastCourseInfoID: Int?
+    let description: String?
     let title, code, shortDescription: String
     let classTimes: [String]
     let classType: Int
@@ -63,13 +64,13 @@ struct Course: Codable {
     let isEnrollGuestEnabled, isLegacyTest: Bool
     let lastReviewStatus: Int
     let courseAgreedDatetime: String?
-    let courseRole: Int
-    let hasPastCourseRole: Bool
-    let ern: String
+    let courseRole: Int?
+    let hasPastCourseRole: Bool?
+    let ern: String?
     let aibotInfo: AibotInfo
-    let enrolledUserCount, enrolledStudentCount, normalLectureCount, testLectureCount: Int
-    let normalLecturePageCount: Int
-    let isLibraryMaterialInstanceExist, isLibraryMaterialInstanceSyncEnabled: Bool
+    let enrolledUserCount, enrolledStudentCount, normalLectureCount, testLectureCount: Int?
+    let normalLecturePageCount: Int?
+    let isLibraryMaterialInstanceExist, isLibraryMaterialInstanceSyncEnabled: Bool?
     let enrolledRoleBeginDatetime, enrolledRoleEndDatetime, lecturePageReadInfo: String?
     let tracks: [Track]?
     let tags: [Tag]?
@@ -97,6 +98,7 @@ struct Course: Codable {
         case price
         case priceUsd = "price_usd"
         case unit
+        case description
         case discountedPrice = "discounted_price"
         case discountedPriceUsd = "discounted_price_usd"
         case discountBeginDatetime = "discount_begin_datetime"

@@ -11,6 +11,10 @@ struct Colors {
     static var textBlack: Color = Color(hex: "#000000")
     static var titleImageBackgroundGray: Color = Color(hex: "#3A3A4C")
     static var tagsGray: Color = Color(hex: "#E4E4E4")
+    static var applyPurple: Color = Color(hex: "#5A2ECC")
+    static var logoBackgroundGray: Color = Color(hex: "#F3F3F3")
+    static var lecturePurple: Color = Color(hex: "#524FA1")
+    static var lineGray: Color = Color(hex: "#AEAEAE")
 }
 
 extension Color {

@@ -11,6 +11,8 @@ import Foundation
 
 protocol WebRepositoryProtocol {
     func getCourseList(offset: Int, count: Int, filterIsRecommend: Bool?, filterIsFree: Bool?, filterConditions: [String: Any]?) -> AnyPublisher<CourseListModel?, Error>
+    func getLectureList(offset: Int, count: Int, courseId: Int) -> AnyPublisher<LectureListModel?, Error>
+    func getCourseItem(courseId: Int) -> AnyPublisher<CourseItemModel?, Error>
     
 }
 
@@ -19,6 +21,30 @@ struct WebRepository: WebRepositoryProtocol {
     
     init(_ baseURL: String) {
         self.baseURL = baseURL
+    }
+    
+    func getCourseItem(courseId: Int) -> AnyPublisher<CourseItemModel?, Error> {
+        let request: AnyPublisher<CourseItemModel?, Error> = request(endpoint: API.getCourseItem, parameters: [
+            "course_id": courseId
+        ])
+        
+        return request.tryMap { obj -> CourseItemModel? in
+            return obj
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func getLectureList(offset: Int, count: Int, courseId: Int) -> AnyPublisher<LectureListModel?, Error> {
+        let request: AnyPublisher<LectureListModel?, Error> = request(endpoint: API.getLectureList, parameters: [
+            "offset": offset,
+            "count": count,
+            "course_id": courseId
+        ])
+        
+        return request.tryMap { obj -> LectureListModel? in
+            return obj
+        }
+        .eraseToAnyPublisher()
     }
     
     func getCourseList(offset: Int, count: Int, filterIsRecommend: Bool?, filterIsFree: Bool?, filterConditions: [String : Any]?) -> AnyPublisher<CourseListModel?, Error> {

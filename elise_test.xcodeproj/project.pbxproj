@@ -22,6 +22,11 @@
 		449606A32B132F8600D15B6B /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449606A22B132F8600D15B6B /* View+Extension.swift */; };
 		449606A72B13477A00D15B6B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449606A62B13477A00D15B6B /* DetailView.swift */; };
 		449606A92B13478300D15B6B /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449606A82B13478300D15B6B /* DetailViewModel.swift */; };
+		449606BE2B14B2AE00D15B6B /* LectureListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449606BD2B14B2AE00D15B6B /* LectureListModel.swift */; };
+		449606C12B14B73500D15B6B /* PressButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449606C02B14B73500D15B6B /* PressButtonStyle.swift */; };
+		449606C52B14D84E00D15B6B /* CouseItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449606C42B14D84E00D15B6B /* CouseItemModel.swift */; };
+		449606CB2B14E58200D15B6B /* Parma in Frameworks */ = {isa = PBXBuildFile; productRef = 449606CA2B14E58200D15B6B /* Parma */; };
+		449606CE2B14E87800D15B6B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 449606CD2B14E87800D15B6B /* Kingfisher */; };
 		44BA0B882B12650B003687B7 /* elise_testApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA0B872B12650B003687B7 /* elise_testApp.swift */; };
 		44BA0B8A2B12650B003687B7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA0B892B12650B003687B7 /* MainView.swift */; };
 		44BA0B8C2B12650C003687B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44BA0B8B2B12650C003687B7 /* Assets.xcassets */; };
@@ -69,6 +74,9 @@
 		449606A22B132F8600D15B6B /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		449606A62B13477A00D15B6B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		449606A82B13478300D15B6B /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		449606BD2B14B2AE00D15B6B /* LectureListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureListModel.swift; sourceTree = "<group>"; };
+		449606C02B14B73500D15B6B /* PressButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressButtonStyle.swift; sourceTree = "<group>"; };
+		449606C42B14D84E00D15B6B /* CouseItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouseItemModel.swift; sourceTree = "<group>"; };
 		44BA0B842B12650B003687B7 /* elise_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = elise_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44BA0B872B12650B003687B7 /* elise_testApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = elise_testApp.swift; sourceTree = "<group>"; };
 		44BA0B892B12650B003687B7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -90,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				449606CE2B14E87800D15B6B /* Kingfisher in Frameworks */,
+				449606CB2B14E58200D15B6B /* Parma in Frameworks */,
 				449606982B131FF000D15B6B /* SDWebImageSwiftUI in Frameworks */,
 				44BA0BB82B12664A003687B7 /* Alamofire in Frameworks */,
 			);
@@ -150,6 +160,14 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		449606BF2B14B72500D15B6B /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				449606C02B14B73500D15B6B /* PressButtonStyle.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
 		44BA0B7B2B12650B003687B7 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +191,7 @@
 		44BA0B862B12650B003687B7 /* elise_test */ = {
 			isa = PBXGroup;
 			children = (
+				449606BF2B14B72500D15B6B /* Modifier */,
 				4496068F2B1304B000D15B6B /* elise-test-Info.plist */,
 				449606862B13047600D15B6B /* Font */,
 				44BA0BB12B12657C003687B7 /* Service+Repository */,
@@ -243,6 +262,8 @@
 			isa = PBXGroup;
 			children = (
 				4496067C2B12725500D15B6B /* CourseListModel.swift */,
+				449606BD2B14B2AE00D15B6B /* LectureListModel.swift */,
+				449606C42B14D84E00D15B6B /* CouseItemModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -278,6 +299,8 @@
 			packageProductDependencies = (
 				44BA0BB72B12664A003687B7 /* Alamofire */,
 				449606972B131FF000D15B6B /* SDWebImageSwiftUI */,
+				449606CA2B14E58200D15B6B /* Parma */,
+				449606CD2B14E87800D15B6B /* Kingfisher */,
 			);
 			productName = elise_test;
 			productReference = 44BA0B842B12650B003687B7 /* elise_test.app */;
@@ -354,6 +377,8 @@
 			packageReferences = (
 				44BA0BB62B12664A003687B7 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				449606962B131FF000D15B6B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				449606C92B14E58200D15B6B /* XCRemoteSwiftPackageReference "Parma" */,
+				449606CC2B14E87800D15B6B /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 44BA0B852B12650B003687B7 /* Products */;
 			projectDirPath = "";
@@ -401,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				449606C52B14D84E00D15B6B /* CouseItemModel.swift in Sources */,
 				4496069D2B1328A400D15B6B /* CourseItemView.swift in Sources */,
 				44BA0B8A2B12650B003687B7 /* MainView.swift in Sources */,
 				449606912B13052C00D15B6B /* Colors.swift in Sources */,
@@ -409,6 +435,8 @@
 				449606A12B132F3E00D15B6B /* FlexibleView.swift in Sources */,
 				449606932B1308E600D15B6B /* String+Extension.swift in Sources */,
 				449606A32B132F8600D15B6B /* View+Extension.swift in Sources */,
+				449606BE2B14B2AE00D15B6B /* LectureListModel.swift in Sources */,
+				449606C12B14B73500D15B6B /* PressButtonStyle.swift in Sources */,
 				44BA0B882B12650B003687B7 /* elise_testApp.swift in Sources */,
 				4496067D2B12725500D15B6B /* CourseListModel.swift in Sources */,
 				44BA0BB52B1265C5003687B7 /* APICall.swift in Sources */,
@@ -755,6 +783,22 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		449606C92B14E58200D15B6B /* XCRemoteSwiftPackageReference "Parma" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dasautoooo/Parma.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		449606CC2B14E87800D15B6B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		44BA0BB62B12664A003687B7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -770,6 +814,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 449606962B131FF000D15B6B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		449606CA2B14E58200D15B6B /* Parma */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 449606C92B14E58200D15B6B /* XCRemoteSwiftPackageReference "Parma" */;
+			productName = Parma;
+		};
+		449606CD2B14E87800D15B6B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 449606CC2B14E87800D15B6B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		44BA0BB72B12664A003687B7 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
